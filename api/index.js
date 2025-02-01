@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 require("dotenv").config();
 const authRoute = require("./routes/auth");
@@ -19,7 +20,7 @@ const connect = async () => {
 // middlewares
 app.use(cookieParser());
 app.use(express.json());
-
+app.use(cors());
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
